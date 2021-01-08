@@ -1,0 +1,42 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30804.86
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MudBlazor.Extensions", "MudBlazor.Extensions\MudBlazor.Extensions.csproj", "{6AE276DE-1E54-4139-B695-4AC5FD5FD2CD}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MudBlazor", "MudBlazor", "{04125D9A-5F4F-4204-86ED-A1E7821AFED1}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MudBlazor", "..\..\MudBlazor\src\MudBlazor\MudBlazor.csproj", "{F20A1B7D-BD09-4B37-BB37-090ED84FE6FA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MudBlazor.Extensions.Docs.Server", "..\MudBlazor.Extensions.Docs.Server\MudBlazor.Extensions.Docs.Server\MudBlazor.Extensions.Docs.Server.csproj", "{35555B1C-647C-4CB9-B9FB-F05487EE1E5E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6AE276DE-1E54-4139-B695-4AC5FD5FD2CD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6AE276DE-1E54-4139-B695-4AC5FD5FD2CD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6AE276DE-1E54-4139-B695-4AC5FD5FD2CD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6AE276DE-1E54-4139-B695-4AC5FD5FD2CD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F20A1B7D-BD09-4B37-BB37-090ED84FE6FA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F20A1B7D-BD09-4B37-BB37-090ED84FE6FA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F20A1B7D-BD09-4B37-BB37-090ED84FE6FA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F20A1B7D-BD09-4B37-BB37-090ED84FE6FA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{35555B1C-647C-4CB9-B9FB-F05487EE1E5E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{35555B1C-647C-4CB9-B9FB-F05487EE1E5E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{35555B1C-647C-4CB9-B9FB-F05487EE1E5E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{35555B1C-647C-4CB9-B9FB-F05487EE1E5E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{F20A1B7D-BD09-4B37-BB37-090ED84FE6FA} = {04125D9A-5F4F-4204-86ED-A1E7821AFED1}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {B95E4DEF-EE0D-48C3-9A2E-D5045BC20BBC}
+	EndGlobalSection
+EndGlobal
