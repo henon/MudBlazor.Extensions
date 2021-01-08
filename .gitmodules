@@ -1,3 +1,4 @@
 [submodule "MudBlazor"]
 	path = MudBlazor
 	url = git@github.com:Garderoben/MudBlazor.git
+	branch = develop
