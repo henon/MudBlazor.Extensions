@@ -1,0 +1,11 @@
+﻿<MudContainer MaxWidth="@MaxWidth">
+    <div id="docspage" class="docs-page">
+        <CascadingValue Value="this" IsFixed>
+            @ChildContent
+        </CascadingValue>
+    </div>
+@*        <div class="docs-navigation-footer">
+        <NavigationFooter Section=_section Previous="@_previous" Next="@_next" />
+    </div>
+*@    
+    </MudContainer>

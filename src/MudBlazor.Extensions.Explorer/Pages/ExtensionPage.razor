@@ -1,0 +1,68 @@
+﻿@page "/extension/{ExtensionId}"
+
+@using Markdig.Syntax.Inlines
+@using MudBlazor.Extensions.Explorer.Helpers
+@using MudBlazor.Extensions.Explorer.Models
+@using MudBlazor.Extensions.Explorer.Services
+
+<div class="px-10 mt-10">
+    <DocsPage>
+        @if (_extension == null)
+        {
+            <DocsPageHeader Title="Forgotten, Forlorn, Forsaken"
+                        SubTitle="@($"Ancient lore hints at a mythical MudBlazor extension by the name of '{ExtensionId}', but it has long since been forgotten or may never have existed.")" />
+        }
+        else
+        {
+            <DocsPageHeader Title="@_extension.Name" SubTitle="@_extension.Description">
+
+                @*shields*@
+                <div class="mt-3">
+                    @*github*@
+                    <img src='@($"http://img.shields.io/github/stars/{_extension.RepoName.ToLowerInvariant()}?logo=github")' alt='github stars' />
+                    <img src='@($"http://img.shields.io/github/last-commit/{_extension.RepoName.ToLowerInvariant()}?logo=github")' alt='last commit' />
+                    <img src='@($"http://img.shields.io/github/contributors/{_extension.RepoName.ToLowerInvariant()}?logo=github")' alt='contributors' />
+                    @*nuget*@
+                    <img src="@($"http://img.shields.io/nuget/dt/{NugetService.GetPackageName(_extension.Nuget)}?label=downloads&logo=nuget")" alt='nuget downloads' />
+                    <img src="@($"https://img.shields.io/nuget/v/{NugetService.GetPackageName(_extension.Nuget)}?logo=nuget")" alt='version' />
+                </div>
+                <div Class="mt-5">
+                    @*<MudIcon Icon="@Icons.Custom.Brands.GitHub" Size="@Size.Small" Class="mb-n1 mr-1"></MudIcon>*@
+                    Github:
+                    <MudLink Href="@_extension.GithubRepo" Target="_blank">@_extension.RepoName</MudLink>
+                </div>
+                <div Class="mt-1">
+                    @*<NugetIcon PackageUrl="@_extension.Nuget" Size="20" Class="mb-n1 mr-1"/>*@
+                    Nuget:
+                    <MudLink Href="@_extension.Nuget" Target="_blank">@NugetService.GetPackageName(_extension.Nuget)</MudLink>
+                </div>
+                <div Class="mt-1">
+                    License: @_extension.License
+                </div>
+            </DocsPageHeader>
+            @foreach (var type in _extension.Docs)
+            {
+                <DynamicComponent Type="@type" />
+            }
+        }
+    </DocsPage>
+</div>
+
+@code
+{
+    [Parameter] public string ExtensionId { get; set; }
+
+    [Inject] public ExplorerService ExplorerService { get; set; }
+    [Inject] public NugetService NugetService { get; set; }
+
+    MudExtension _extension;
+
+    protected override void OnParametersSet()
+    {
+        base.OnParametersSet();
+        _extension = ExplorerService.GetExtension(ExtensionId);
+    }
+
+
+}
+

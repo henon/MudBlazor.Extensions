@@ -1,0 +1,96 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.BlazorWebAssembly">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <NoWarn>1701;1702;CS8618;CS8603;CS8604;CS8625;CS8600</NoWarn>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <NoWarn>1701;1702;CS8618;CS8603;CS8604;CS8625;CS8600</NoWarn>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="6.0.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="6.0.0" PrivateAssets="all" />
+    <PackageReference Include="Microsoft.AspNetCore.WebUtilities" Version="2.2.0" />
+    <PackageReference Include="MudBlazor" Version="6.0.2" />
+    <PackageReference Include="MudBlazor.Markdown" Version="0.0.5" />
+  </ItemGroup>
+
+  <!--Excubo  webcompiler -  used for scss and js compilation-->
+  <Target Name="ToolRestore">
+    <Exec Command="dotnet tool restore" StandardOutputImportance="high" />
+  </Target>
+  
+  <Target Name="WebCompiler" DependsOnTargets="ToolRestore">
+    <Exec Command="dotnet webcompiler ./Styles/MudBlazor.Extensions.Explorer.scss -c excubowebcompiler.json" StandardOutputImportance="high" StandardErrorImportance="high" />
+  </Target>
+
+  <Target Name="IncludeGeneratedStaticFiles" DependsOnTargets="WebCompiler">
+    <Error Condition="!Exists('wwwroot/MudBlazor.Extensions.Explorer.min.css')" Text="Missing MudBlazor.Extensions.Explorer.min.css in wwwroot" />
+    <!--If we ever bundle js  for the docs site uncomment the below check-->
+    <!--<Error Condition="!Exists('wwwroot/MudBlazor.Extensions.Explorer.min.js')" Text="Missing MudBlazorDocs.min.js in wwwroot" />-->
+    <ItemGroup>
+      <Content Include="wwwroot/MudBlazor.Extensions.Explorer.min.css" Condition="!Exists('wwwroot/MudBlazor.Extensions.Explorer.min.css')" />
+      <!--<Content Include="wwwroot/MudBlazor.Extensions.Explorer.min.js" Condition="!Exists('wwwroot/MudBlazor.Extensions.Explorer.min.js')" />-->
+    </ItemGroup>
+  </Target>
+
+  <!--Dont Include in build output-->
+  <ItemGroup>
+    <Content Remove="compilerconfig.json" />
+    <Content Remove="excubowebcompiler.json" />
+  </ItemGroup>
+
+  <!--Outside Visual Studio SolutionDir is not available-->
+  <PropertyGroup>
+    <SolutionDir Condition=" '$(SolutionDir)' == '' ">$(MSBuildThisFileDirectory)../</SolutionDir>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <BinDocsCompiler>$(SolutionDir)MudBlazor.Extensions.DocsCompiler/bin/Debug/net6.0/MudBlazor.Extensions.DocsCompiler.dll</BinDocsCompiler>
+  </PropertyGroup>
+
+  <!--Project path for code generator-->
+  <PropertyGroup>
+    <ProjectDocsCompiler>dotnet run --configuration release --project "$(SolutionDir)MudBlazor.Extensions.DocsCompiler/MudBlazor.Extensions.DocsCompiler.csproj"</ProjectDocsCompiler>
+  </PropertyGroup>
+
+  <!--Execute the code generator-->
+  <Target Name="CompileDocs" BeforeTargets="BeforeBuild">
+    <!--Command-line for the code generator-->
+    <Message Text="Generating Docs and Tests" Importance="high" />
+    <Exec Command="dotnet &quot;$(BinDocsCompiler)&quot;" Condition="Exists('$(BinDocsCompiler)')" />
+    <Exec Command="$(ProjectDocsCompiler)" Condition="!Exists('$(BinDocsCompiler)')" />
+  </Target>
+
+  <!--This file contains any ExampleCode that is new and needs including in the build -->
+  <Target Name="ReadFromFile" DependsOnTargets="CompileDocs">
+    <ItemGroup>
+      <NewFiles Include="NewFilesToBuild.txt" />
+    </ItemGroup>
+    <ReadLinesFromFile File="@(NewFiles)">
+      <Output TaskParameter="Lines" ItemName="NewExampleCodeToBuild" />
+    </ReadLinesFromFile>
+  </Target>
+
+  <!--Add Content that is being generated as part of the build cycle-->
+  <!--We need to do this because the project is not yet aware of files that were generated after the build started-->
+  <Target Name="IncludeGeneratedFiles" BeforeTargets="BeforeBuild" DependsOnTargets="CompileDocs;ReadFromFile">
+    <ItemGroup>
+      <!--<Compile Include="Models/Snippets.generated.cs" Condition="!Exists('Models/Snippets.generated.cs')" />-->
+      <!--<Compile Include="Models/DocStrings.generated.cs" Condition="!Exists('Models/DocStrings.generated.cs')" />-->
+      <EmbeddedResource Include="@(NewExampleCodeToBuild)" Condition="@(NewExampleCodeToBuild-&gt;Count()) != 0" />
+    </ItemGroup>
+  </Target>
+
+  <!--Update ExampleCode-->
+  <ItemGroup>
+    <EmbeddedResource Include="Extensions\**\*.html" />
+  </ItemGroup>
+</Project>

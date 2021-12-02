@@ -1,0 +1,97 @@
+@using System
+@using System.Linq
+@using Microsoft.AspNetCore.Components
+@using MudBlazor
+@using System.Collections.Generic
+@using System.Text.RegularExpressions
+
+@*html head (for server prerendering)*@
+<PageTitle>@(GetTitle())</PageTitle>
+<HeadContent>
+    <meta Name="keywords" Content="@GetKeywords()" />
+    <meta Property="og:title" Content="@GetTitle()" />
+    <meta Name="twitter:title" Content="@GetTitle()" />
+    @if (!string.IsNullOrEmpty(SubTitle))
+    {
+        <meta Name="description" Content="@(SubTitle)" />
+        <meta Property="og:description" Content="@SubTitle" />
+        <meta Name="twitter:description" Content="@SubTitle" />
+    }
+</HeadContent>
+
+<div class="docs-page-header mb-12">
+    <MudText Typo="@Typo.h3">@Title</MudText>
+    <MudText>@GetSubTitle() @Description</MudText>
+    @ChildContent
+</div>
+
+    @*<DocsPageSection api-link-section>
+        <SectionHeader Title="API" />
+        <div class="docs-page-apilinks">
+            <ul class="my-2">
+                <li>
+                    <MudLink Href="@_apiLink">
+                        <CodeInline>@($"<{_componentTypeName}>")</CodeInline>
+                    </MudLink>
+                </li>
+                @if (_component.ChildTypes != null)
+                {
+                    @foreach (var childType in _component.ChildTypes)
+                    {
+                        <li>
+                            <MudLink Href="@($"api/{childType.Name.Replace("`1", "").ToLower().Replace("mud","")}")" Class="ms-1">
+                                - <CodeInline>@($"<{childType.Name.Replace("`1", "")}>")</CodeInline>
+                            </MudLink>
+                        </li>
+                    }
+                }
+            </ul>
+        </div>
+    </DocsPageSection>*@
+
+
+@code {
+
+    [Inject] public NavigationManager NavigationManager { get; set; }
+
+    [Parameter] public string Title { get; set; }
+    [Parameter] public string SubTitle { get; set; }
+    [Parameter] public string Keywords { get; set; }
+    [Parameter] public bool DisableApiHeader { get; set; }
+    [Parameter] public RenderFragment Description { get; set; }
+    [Parameter] public RenderFragment ChildContent { get; set; }
+    [Parameter] public string ComponentLink { get; set; }
+
+    private string GetComponentLink()
+    {
+        //if (_component?.Type != null)
+        //    return $"components/{_component?.Link}";
+        //return $"components/{_parentComponent?.Link}";
+        return ComponentLink;
+    }
+
+    string GetTitle() => $"{Title} - MudBlazor";
+
+    string GetSubTitle()
+    {
+        if (string.IsNullOrEmpty(SubTitle))
+            return "";
+        return SubTitle.TrimEnd('.') + ".";
+    }
+
+    string GetKeywords()
+    {
+        var keywords = new HashSet<string>(Regex.Split(Keywords ?? "", @",\s"));
+        keywords.Add(Title);
+        //keywords.Add(_componentTypeName);
+        //keywords.Add(_componentTypeName?.Replace("Mud", ""));
+        keywords.Add("mudblazor");
+        keywords.Add("blazor");
+        keywords.Add("component");
+        keywords.Add("material design");
+        keywords.Add("extension");
+        keywords.Remove("");
+        keywords.Remove(null);
+        return string.Join(", ", keywords);
+    }
+}

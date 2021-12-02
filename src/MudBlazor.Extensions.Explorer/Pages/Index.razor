@@ -1,0 +1,38 @@
+﻿@page "/"
+@using MudBlazor.Extensions.Explorer.Helpers
+@using MudBlazor.Extensions.Explorer.Models
+@using MudBlazor.Extensions.Explorer.Services
+
+<div class="px-10 py-16">
+    <DocsPageHeader 
+            Title="MudBlazor Extensions" 
+            SubTitle="Discover MudBlazor extension libraries, components and other tools"
+            Keywords="Extensions, Libraries, Components, Tools, Resources, Community"
+    >
+        <Description>
+            to pimp your <MudLink Href="https://mudblazor.com">MudBlazor</MudLink> project. Created by the MudBlazor team and community.
+        </Description>    
+    </DocsPageHeader>
+</div>
+<div class="silver-bg pa-10">
+    <DocsPageContent>
+        <MudGrid>
+            @foreach(var module in GetFilteredModules())
+            {
+                <MudItem>
+                    <ExtensionCard Extension="@module"/>
+                </MudItem>
+            }
+        </MudGrid>
+    </DocsPageContent>
+</div>
+
+@code {
+    [Inject] ExplorerService  ExplorerService { get; set; }
+
+    public IEnumerable<MudExtension> GetFilteredModules()
+    {
+        return ExplorerService.GetExtensions(); // todo filtering
+    }
+}
+

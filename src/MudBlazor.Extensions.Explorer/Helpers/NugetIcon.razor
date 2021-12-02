@@ -1,0 +1,22 @@
+﻿@using MudBlazor.Extensions.Explorer.Services
+
+<img class="@("package-icon " + Class)" aria-hidden="true" alt=""
+           src="@_iconUrl"
+           onerror="this.src='https://www.nuget.org/Content/gallery/img/default-package-icon-256x256.png'; this.onerror = null;" width="@Size" height="@Size" />
+
+@code {
+    [Inject] public NugetService NugetService { get; set; }
+
+    [Parameter] public string Class { get; set; }
+
+    [Parameter] public string PackageUrl { get; set; }
+    [Parameter] public int Size { get; set; } = 48;
+
+    private string _iconUrl="https://www.nuget.org/Content/gallery/img/default-package-icon-256x256.png";
+
+    protected override async Task OnInitializedAsync()
+    {
+        _iconUrl=await NugetService.GetIconUrl(PackageUrl);
+        await base.OnInitializedAsync();
+    }
+}

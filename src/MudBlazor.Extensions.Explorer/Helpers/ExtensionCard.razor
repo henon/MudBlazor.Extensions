@@ -1,0 +1,43 @@
+﻿@using MudBlazor.Extensions.Explorer.Models
+@using MudBlazor.Extensions.Explorer.Services
+
+<MudCard Class="pa-5 extension-card" @onclick="OnCardClick">
+    <MudGrid>
+        <MudItem>
+            <div class="extension-icon">
+                <NugetIcon PackageUrl="@Extension.Nuget"/>
+            </div>
+        </MudItem>
+        <MudItem>
+            <MudText Typo="Typo.h6">
+                @Extension.Name
+                @if (Extension.IsOfficial)
+                {
+                    <MudBadge Content="@("Official")" Color="Color.Primary" Overlap="false" Class="ml-3">
+                    </MudBadge>
+                }
+            </MudText>
+            <MudText>
+                by @Extension.Authors
+            </MudText>
+            <MudText Class="silver-text mt-1">
+                <img src='@($"http://img.shields.io/github/stars/{Extension.RepoName.ToLowerInvariant()}?logo=github")' alt='github stars'/>
+                <img src="@($"http://img.shields.io/nuget/dt/{NugetService.GetPackageName(Extension.Nuget)}?label=downloads&logo=nuget")" alt='nuget downloads'/>
+            </MudText>
+        </MudItem>
+    </MudGrid>
+    <MudText Typo="Typo.body1" Class="mt-3">
+        @Extension.Description
+    </MudText>
+</MudCard>
+
+@code {
+    [Parameter] public MudExtension Extension { get; set; }
+    [Inject] public NavigationManager NavMan { get; set; }
+    [Inject] public NugetService NugetService{ get; set; }
+
+    public void OnCardClick()
+    {
+        NavMan.NavigateTo("/extension/" + Extension.Id);
+    }
+}
