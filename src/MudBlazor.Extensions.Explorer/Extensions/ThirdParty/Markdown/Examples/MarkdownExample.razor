@@ -2,10 +2,7 @@
 
 <MudGrid>
     <MudItem xs="12" sm="12" md="6">
-        <MudMarkdown Value="@markdown"
-                        TableCellMinWidth="100"
-                        OverrideLinkUrl="@OverrideLink"
-                        CodeBlockTheme="CodeBlockTheme.Vs" />
+        <MudMarkdown Value="@markdown" TableCellMinWidth="100" OverrideLinkUrl="@OverrideLink" CodeBlockTheme="CodeBlockTheme.Vs" />
     </MudItem>
     <MudItem xs="12" sm="12" md="6">
         <MudTextField Label="Markdown" Variant="Variant.Outlined" @bind-Value="@markdown" Lines="5" DebounceInterval="100" />
@@ -17,8 +14,7 @@
 
     string markdown = @"*From Wikipedia, the free encyclopedia*
 
-**Markdown*** is a [lightweight markup language](https://en.wikipedia.org/wiki/Lightweight_markup_language) for creating [formatted text](https://en.wikipedia.org/wiki/Formatted_text) using a [plain-text editor](https://en.wikipedia.org/wiki/Text_editor).
-";
+**Markdown** is a [lightweight markup language](https://en.wikipedia.org/wiki/Lightweight_markup_language) for creating [formatted text](https://en.wikipedia.org/wiki/Formatted_text) using a [plain-text editor](https://en.wikipedia.org/wiki/Text_editor).";
 
     public string OverrideLink(LinkInline link)
     {

@@ -1,0 +1,76 @@
+<div class="mud-codeblock">
+<div class="html"><pre>
+<span class="atSign">&#64;</span>using Markdig.Syntax.Inlines
+
+<span class="htmlTagDelimiter">&lt;</span><span class="htmlElementName">MudGrid</span><span class="htmlTagDelimiter">&gt;</span>
+    <span class="htmlTagDelimiter">&lt;</span><span class="htmlElementName">MudItem</span> <span class="htmlAttributeName">xs</span><span class="htmlOperator">=</span><span class="quot">&quot;</span><span class="htmlAttributeValue">12</span><span class="quot">&quot;</span><span class="htmlTagDelimiter">&gt;</span>
+        <span class="htmlTagDelimiter">&lt;</span><span class="htmlElementName">MudTextField</span> <span class="htmlAttributeName">Label</span><span class="htmlOperator">=</span><span class="quot">&quot;</span><span class="htmlAttributeValue">Markdown</span><span class="quot">&quot;</span> <span class="htmlAttributeName">Variant</span><span class="htmlOperator">=</span><span class="quot">&quot;</span><span class="enum">Variant</span><span class="enumValue">.Outlined</span><span class="quot">&quot;</span> <span class="htmlAttributeName"><span class="atSign">&#64;</span>bind-Value</span><span class="htmlOperator">=</span><span class="quot">&quot;</span><span class="sharpVariable"><span class="atSign">&#64;</span>Value</span><span class="quot">&quot;</span> <span class="htmlAttributeName">Lines</span><span class="htmlOperator">=</span><span class="quot">&quot;</span><span class="htmlAttributeValue">25</span><span class="quot">&quot;</span> <span class="htmlAttributeName">DebounceInterval</span><span class="htmlOperator">=</span><span class="quot">&quot;</span><span class="htmlAttributeValue">100</span><span class="quot">&quot;</span> <span class="htmlTagDelimiter">/&gt;</span>
+    <span class="htmlTagDelimiter">&lt;/</span><span class="htmlElementName">MudItem</span><span class="htmlTagDelimiter">&gt;</span>
+    <span class="htmlTagDelimiter">&lt;</span><span class="htmlElementName">MudItem</span> <span class="htmlAttributeName">xs</span><span class="htmlOperator">=</span><span class="quot">&quot;</span><span class="htmlAttributeValue">12</span><span class="quot">&quot;</span><span class="htmlTagDelimiter">&gt;</span>
+        <span class="htmlTagDelimiter">&lt;</span><span class="htmlElementName">MudMarkdown</span> <span class="htmlAttributeName">Value</span><span class="htmlOperator">=</span><span class="quot">&quot;</span><span class="sharpVariable"><span class="atSign">&#64;</span>Value</span><span class="quot">&quot;</span> <span class="htmlAttributeName">TableCellMinWidth</span><span class="htmlOperator">=</span><span class="quot">&quot;</span><span class="htmlAttributeValue">100</span><span class="quot">&quot;</span> <span class="htmlAttributeName">CodeBlockTheme</span><span class="htmlOperator">=</span><span class="quot">&quot;</span><span class="enum">CodeBlockTheme</span><span class="enumValue">.Vs</span><span class="quot">&quot;</span> <span class="htmlTagDelimiter">/&gt;</span>
+    <span class="htmlTagDelimiter">&lt;/</span><span class="htmlElementName">MudItem</span><span class="htmlTagDelimiter">&gt;</span>
+<span class="htmlTagDelimiter">&lt;/</span><span class="htmlElementName">MudGrid</span><span class="htmlTagDelimiter">&gt;</span>
+</pre></div>
+<div class="csharp"><pre>
+<span class="atSign">&#64;</span>code
+{
+
+     <span class="keyword">private</span> <span class="keyword">string</span> Value { <span class="keyword">get</span>; <span class="keyword">set</span>; } = <span class="stringCSharpVerbatim"><span class="atSign">&#64;</span>&quot;﻿
+# Heading 1
+## Heading 2
+### Heading 3
+#### Heading 4
+##### Heading 5
+###### Heading 6
+
+Some regular text. *Text in italics* and **text in bold**.
+**Bold and *italics within***.
+*Italics and **bold within***.
+It is possible to `highlight some code`.
+***
+&gt; Quote someone.
+&gt; Use **bold** and *italics*.
+&gt; Or visit the [MudBlazor project site](https://mudblazor.com/).
+***
+#### To-Do list
+- Make a Blazor project in Visual Studio
+  - Open MudBlazor Docs
+    - Copy-paste code snippets
+    - Complete awesome web app in no time
+- Go to Japan
+  - Visit Tokyo
+  - Visit Sapporo
+  - Visit Kyoto
+- Smile more often
+- Enjoy yourself
+***
+#### Largest cities in Japan
+|Rank|Municipality|Prefecture|Population|
+|-|-|-|-|
+|1|Tokyo|Tokyo|8,945,695|
+|2|Yokohama|Kanagawa|3,688,773|
+|3|Osaka|Osaka|2,655,314|
+|4|Nagoya|Aichi|2,263,894|
+|5|Sapporo|Hokkaido|1,913,545|
+|6|Kobe|Hyogo|1,544,200|
+|7|Kyoto|Kyoto|1,474,015|
+|8|Fukuoka|Fukuoka|1,463,743|
+|9|Kawasaki|Kanagawa|1,425,512|
+|10|Saitama|Saitama|1,222,434|
+
+\* Source: [Wikipedia](https://en.wikipedia.org/wiki/Largest_cities_in_Japan_by_population_by_decade#2010)
+
+#### Code block
+```csharp
+public int Factorial(int f)
+{
+    if(f == 0)
+        return 1;
+    else
+        return f * Factorial(f-1); 
+}
+```&quot;</span>;
+
+}
+</pre></div>
+</div>
