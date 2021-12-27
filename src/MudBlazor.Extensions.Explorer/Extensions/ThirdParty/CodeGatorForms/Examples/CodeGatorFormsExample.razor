@@ -1,0 +1,38 @@
+﻿@using CG.Blazor.Forms
+@using CG.Blazor.Forms.Attributes
+@using System.ComponentModel.DataAnnotations
+@using System.Text.Json
+
+<DynamicForm Model="@_model" OnValidSubmit="OnValidSubmit"/>
+<br />
+Click Submit to see the serialized model as JSON:
+<pre>
+    @_json
+</pre>
+
+@code
+{
+    public MyForm _model = new MyForm();
+    string _json { get; set; } = "";
+
+    public class MyForm
+    {
+	    [RenderMudTextField]
+	    [Required]
+	    public string FirstName { get; set; }
+
+	    [RenderMudTextField]
+	    [Required]
+	    public string LastName { get; set; }
+
+	    [RenderMudDatePicker]
+	    public DateTime? DateOfBirth { get; set; }
+    }
+
+    private void OnValidSubmit(EditContext editContext)
+    {
+        _json = $"{_model.GetType().Name}:\n" + 
+            JsonSerializer.Serialize<MyForm>(_model, new JsonSerializerOptions() { WriteIndented = true });
+        StateHasChanged();
+    }
+}

@@ -1,0 +1,54 @@
+﻿@using MudBlazor.Extensions.Explorer.Extensions.ThirdParty.CodeGatorForms.Examples
+@using MudBlazor.Extensions.Explorer.Helpers
+@namespace MudBlazor.Extensions.Explorer.Extensions
+
+@*installation*@
+@*<DocsPageSection>
+    <SectionHeader Title="Installation">
+        <Description>
+            <ol class="ml-5">
+                <li class="my-2">
+                    If you don't have MudBlazor installed, please install it first. Follow the instructions in the <MudLink Href="https://mudblazor.com/getting-started/installation" Target="_blank">MudBlazor docs</MudLink>.
+                </li>
+                <li class="my-2">
+                    Install the NuGet package: <CodeInline>dotnet add package MudBlazor.Markdown</CodeInline>
+                </li>
+                <li class="my-2">
+                    Add the following in <CodeInline>_Host.cshtml</CodeInline> (BSS) or <CodeInline>index.html</CodeInline> (WASM). <br/>
+                    In the <CodeInline Tag>head</CodeInline> node add:
+                    <br/>
+                    <CodeInline>
+                        @("<link href=\"_content/MudBlazor.Markdown/MudBlazor.Markdown.min.css\" rel=\"stylesheet\" />")
+                    </CodeInline>
+                </li>
+                <li class="my-2">
+                    At the bottom of the <CodeInline Tag>body</CodeInline> node add this JS source: <br/>
+                    <CodeInline>
+                        @("<script src=\"_content/MudBlazor.Markdown/MudBlazor.Markdown.min.js\"></script>")
+                    </CodeInline>
+                </li>
+                <li class="my-2">
+                    Register MudBlazor services in the DI container. <br/>
+                    For the Blazor Server in the Startup.cs add this method in <CodeInline>ConfigureServices</CodeInline>: <br/>
+                    <CodeInline>services.AddMudMarkdownServices();</CodeInline><br/>
+                    For the Blazor WebAssembly in the Program.cs add this:<br/>
+                    <CodeInline>builder.Services.AddMudMarkdownServices();</CodeInline>
+                </li>
+            </ol>
+        </Description>
+    </SectionHeader>
+</DocsPageSection>*@
+
+@*usage*@
+<DocsPageSection>
+    <SectionHeader Title="Usage">
+        <Description>
+            Create your model type. Use attributes from the <CodeInline>CG.Blazor.Forms.Attributes</CodeInline> namespace to decorate any properties you want to be rendered on the form. <br />
+            Here is an example:
+        </Description>
+    </SectionHeader>
+    <SectionContent Outlined="true" FullWidth="true">
+        <CodeGatorFormsExample />
+    </SectionContent>
+    <SectionSource Code="CodeGatorFormsExample" />
+</DocsPageSection>

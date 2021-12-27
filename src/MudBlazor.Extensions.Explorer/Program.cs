@@ -18,5 +18,7 @@ builder.Services.AddDocsServices();
 
 //markdown
 builder.Services.AddMudMarkdownServices();
+//code gator forms
+builder.Services.AddFormGeneration();
 
 await builder.Build().RunAsync();
