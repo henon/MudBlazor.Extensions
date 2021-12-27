@@ -14,8 +14,8 @@
                     Install the NuGet package: <CodeInline>dotnet add package MudBlazor.Markdown</CodeInline>
                 </li>
                 <li class="my-2">
-                    Add the CSS reference in <CodeInline>Pages/_Host.cshtml</CodeInline> (Server) or <CodeInline>wwwroot/index.html</CodeInline> (WebAssembly). <br/>
-                    In the <CodeInline Tag>head</CodeInline> node add the stylesheet:
+                    Add the following in <CodeInline>_Host.cshtml</CodeInline> (BSS) or <CodeInline>index.html</CodeInline> (WASM). <br/>
+                    In the <CodeInline Tag>head</CodeInline> node add:
                     <br/>
                     <CodeInline>
                         @("<link href=\"_content/MudBlazor.Markdown/MudBlazor.Markdown.min.css\" rel=\"stylesheet\" />")
