@@ -1,0 +1,27 @@
+﻿@using MudBlazor.ThemeManager
+
+<MudButton Variant="Variant.Filled" Class="pr-1">
+    Change Theme <MudThemeManagerButton OnClick="OpenThemeManager"/>
+</MudButton>
+<MudThemeManager @bind-Open="_themeManagerOpen" Theme="_themeManager" ThemeChanged="UpdateTheme" />
+
+@code {
+    private ThemeManagerTheme _themeManager = new ThemeManagerTheme();
+    public bool _themeManagerOpen = false;
+
+    void OpenThemeManager()
+    {
+        _themeManagerOpen = true;
+    }
+
+    void UpdateTheme(ThemeManagerTheme value)
+    {
+        _themeManager = value;
+        StateHasChanged();
+    }
+
+    protected override void OnInitialized()
+    {
+        StateHasChanged();
+    }
+}

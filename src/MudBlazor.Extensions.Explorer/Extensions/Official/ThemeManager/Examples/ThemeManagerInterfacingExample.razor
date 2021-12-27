@@ -1,0 +1,11 @@
+﻿@using MudBlazor.ThemeManager
+
+<MudThemeProvider Theme="_themeManager.Theme" />
+<MudAppBar Elevation="_themeManager.AppBarElevation"/>
+<MudDrawer @bind-Open="_drawerOpen" ClipMode="_themeManager.DrawerClipMode" Elevation="_themeManager.DrawerElevation"/>
+
+@code {
+    // note: we assume this to be the theme manager from the usage example
+    private ThemeManagerTheme _themeManager = new ThemeManagerTheme();
+    private bool _drawerOpen;
+}

@@ -2,6 +2,7 @@
 // MudBlazor licenses this file to you under the MIT license.
 // See the LICENSE file in the project root for more information.
 
+using MudBlazor.Extensions.Explorer.Extensions.Official.ThemeManager;
 using MudBlazor.Extensions.Explorer.Models;
 
 namespace MudBlazor.Extensions.Explorer.Extensions
@@ -17,5 +18,13 @@ namespace MudBlazor.Extensions.Explorer.Extensions
         public override bool IsThirdParty => false; // (official)
         public override string GithubRepo => "https://github.com/MudBlazor/ThemeManager";
         public override string Nuget => "https://www.nuget.org/packages/MudBlazor.ThemeManager/";
+
+        public override IEnumerable<Type> Docs
+        {
+            get
+            {
+                yield return typeof(ThemeManagerDocs);
+            }
+        }
     }
 }

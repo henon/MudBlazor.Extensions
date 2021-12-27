@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MudBlazor.Extensions.Explor
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MudBlazor.Extensions.Tests", "MudBlazor.Extensions.Tests\MudBlazor.Extensions.Tests.csproj", "{657D3F59-E23E-41DA-861A-26220D6AC9F6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MudBlazor.Extensions.DocsCompiler", "MudBlazor.Extensions.DocsCompiler\MudBlazor.Extensions.DocsCompiler.csproj", "{110E2DE9-1ED9-4E5E-B943-509F62FE8014}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MudBlazor.Extensions.DocsCompiler", "MudBlazor.Extensions.DocsCompiler\MudBlazor.Extensions.DocsCompiler.csproj", "{110E2DE9-1ED9-4E5E-B943-509F62FE8014}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

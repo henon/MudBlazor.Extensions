@@ -1,0 +1,46 @@
+﻿@using MudBlazor.Extensions.Explorer.Extensions.Official.ThemeManager.Examples
+@using MudBlazor.Extensions.Explorer.Helpers
+
+@*installation*@
+<DocsPageSection>
+    <SectionHeader Title="Installation">
+        <Description>
+            <ol class="ml-5">
+                <li class="my-2">
+                    If you don't have MudBlazor installed, please install it first. Follow the instructions in the <MudLink Href="https://mudblazor.com/getting-started/installation" Target="_blank">MudBlazor docs</MudLink>.
+                </li>
+                <li class="my-2">
+                    Install the NuGet package: <CodeInline>dotnet add package MudBlazor.ThemeManager</CodeInline>
+                </li>
+                <li class="my-2">
+                    Add the following in <CodeInline>_Host.cshtml</CodeInline> (BSS) or <CodeInline>index.html</CodeInline> (WASM). <br/>
+                    In the <CodeInline Tag>head</CodeInline> node add:
+                    <SectionSource Code="ThemeManagerReferencesExample" Class="ml-n5 mt-n5"/>
+                </li>
+            </ol>
+        </Description>
+    </SectionHeader>
+</DocsPageSection>
+
+@*usage and interfacing*@
+<DocsPageSection>
+    <SectionHeader Title="Usage">
+        <Description>
+            Add the components in your <CodeInline>MainLayout.razor</CodeInline> inside <CodeInline Tag>MudLayout</CodeInline>
+        </Description>
+    </SectionHeader>
+    <SectionContent Outlined="true" FullWidth="true">
+        <ThemeManagerExample />
+    </SectionContent>
+    <SectionSource Code="ThemeManagerExample" />
+
+    <SectionHeader Title="Interfacing with your app">
+        <Description>
+            Connect the <CodeInline>ThemeManagerTheme</CodeInline> with the <CodeInline Tag>MudThemeProvider</CodeInline> in your <CodeInline>MainLayout.razor</CodeInline> 
+            to control the theme of your app. You can also connect <CodeInline Tag>MudAppBar</CodeInline> and <CodeInline Tag>MudDrawer</CodeInline> directly.
+        </Description>
+    </SectionHeader>
+    <SectionSource Code="ThemeManagerInterfacingExample" />
+</DocsPageSection>
+
+

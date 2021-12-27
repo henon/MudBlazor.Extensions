@@ -19,7 +19,8 @@
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="6.0.0" PrivateAssets="all" />
     <PackageReference Include="Microsoft.AspNetCore.WebUtilities" Version="2.2.0" />
     <PackageReference Include="MudBlazor" Version="6.0.2" />
-    <PackageReference Include="MudBlazor.Markdown" Version="0.0.5" />
+    <PackageReference Include="MudBlazor.Markdown" Version="0.0.6" />
+    <PackageReference Include="MudBlazor.ThemeManager" Version="1.0.5" />
   </ItemGroup>
 
   <!--Excubo  webcompiler -  used for scss and js compilation-->
