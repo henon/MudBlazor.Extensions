@@ -2,8 +2,6 @@
 using System.IO;
 using System.Linq;
 using System.Text.RegularExpressions;
-using Microsoft.AspNetCore.Components;
-using MudBlazor.Extensions.Explorer.Models;
 
 namespace MudBlazor.Docs.Compiler
 {
@@ -30,16 +28,16 @@ namespace MudBlazor.Docs.Compiler
                 cb.AddLine("{");
                 cb.IndentLevel++;
 
-                var assembly = typeof(MudExtension).Assembly;
-                foreach (var type in assembly.GetTypes().OrderBy(t => GetSaveTypename(t)))
-                {
-                    foreach (var info in type.GetPropertyInfosWithAttribute<ParameterAttribute>())
-                    {
-                        var doc = info.GetDocumentation();
-                        doc = Regex.Replace(doc ?? "", @"</?.+?>", "");
-                        cb.AddLine($"public const string {GetSaveTypename(type).TrimEnd('_')}_{info.Name} = @\"{EscapeDescription(doc)}\";\n");
-                    }
-                }
+                //var assembly = typeof(MudExtension).Assembly;
+                //foreach (var type in assembly.GetTypes().OrderBy(t => GetSaveTypename(t)))
+                //{
+                //    foreach (var info in type.GetPropertyInfosWithAttribute<ParameterAttribute>())
+                //    {
+                //        var doc = info.GetDocumentation();
+                //        doc = Regex.Replace(doc ?? "", @"</?.+?>", "");
+                //        cb.AddLine($"public const string {GetSaveTypename(type).TrimEnd('_')}_{info.Name} = @\"{EscapeDescription(doc)}\";\n");
+                //    }
+                //}
 
                 cb.IndentLevel--;
                 cb.AddLine("}");
