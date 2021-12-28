@@ -3,7 +3,7 @@
 @namespace MudBlazor.Extensions.Explorer.Extensions
 
 @*installation*@
-@*<DocsPageSection>
+<DocsPageSection>
     <SectionHeader Title="Installation">
         <Description>
             <ol class="ml-5">
@@ -11,33 +11,16 @@
                     If you don't have MudBlazor installed, please install it first. Follow the instructions in the <MudLink Href="https://mudblazor.com/getting-started/installation" Target="_blank">MudBlazor docs</MudLink>.
                 </li>
                 <li class="my-2">
-                    Install the NuGet package: <CodeInline>dotnet add package MudBlazor.Markdown</CodeInline>
+                    Install the NuGet package: <CodeInline>dotnet add package CG.Blazor.Forms._MudBlazor</CodeInline>
                 </li>
                 <li class="my-2">
-                    Add the following in <CodeInline>_Host.cshtml</CodeInline> (BSS) or <CodeInline>index.html</CodeInline> (WASM). <br/>
-                    In the <CodeInline Tag>head</CodeInline> node add:
-                    <br/>
-                    <CodeInline>
-                        @("<link href=\"_content/MudBlazor.Markdown/MudBlazor.Markdown.min.css\" rel=\"stylesheet\" />")
-                    </CodeInline>
-                </li>
-                <li class="my-2">
-                    At the bottom of the <CodeInline Tag>body</CodeInline> node add this JS source: <br/>
-                    <CodeInline>
-                        @("<script src=\"_content/MudBlazor.Markdown/MudBlazor.Markdown.min.js\"></script>")
-                    </CodeInline>
-                </li>
-                <li class="my-2">
-                    Register MudBlazor services in the DI container. <br/>
-                    For the Blazor Server in the Startup.cs add this method in <CodeInline>ConfigureServices</CodeInline>: <br/>
-                    <CodeInline>services.AddMudMarkdownServices();</CodeInline><br/>
-                    For the Blazor WebAssembly in the Program.cs add this:<br/>
-                    <CodeInline>builder.Services.AddMudMarkdownServices();</CodeInline>
+                    For BSS add <CodeInline>services.AddFormGeneration();</CodeInline> in <CodeInline>Startup.cs</CodeInline><br/>
+                    For WASM add <CodeInline>builder.Services.AddFormGeneration();</CodeInline> in <CodeInline>Program.cs</CodeInline>                    
                 </li>
             </ol>
         </Description>
     </SectionHeader>
-</DocsPageSection>*@
+</DocsPageSection>
 
 @*usage*@
 <DocsPageSection>
@@ -47,7 +30,7 @@
             Here is an example:
         </Description>
     </SectionHeader>
-    <SectionContent Outlined="true" FullWidth="true">
+    <SectionContent Outlined="true" FullWidth="false">
         <CodeGatorFormsExample />
     </SectionContent>
     <SectionSource Code="CodeGatorFormsExample" />

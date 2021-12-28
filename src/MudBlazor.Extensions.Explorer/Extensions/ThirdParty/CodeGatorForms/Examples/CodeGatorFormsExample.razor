@@ -3,7 +3,11 @@
 @using System.ComponentModel.DataAnnotations
 @using System.Text.Json
 
-<DynamicForm Model="@_model" OnValidSubmit="OnValidSubmit"/>
+<MudCard Style="max-width:400px;">
+    <MudCardContent>
+        <DynamicForm Model="@_model" OnValidSubmit="OnValidSubmit"/>
+    </MudCardContent>
+</MudCard>
 <br />
 Click Submit to see the serialized model as JSON:
 <pre>

@@ -28,11 +28,8 @@
                     </CodeInline>
                 </li>
                 <li class="my-2">
-                    Register MudBlazor services in the DI container. <br/>
-                    For the Blazor Server in the Startup.cs add this method in <CodeInline>ConfigureServices</CodeInline>: <br/>
-                    <CodeInline>services.AddMudMarkdownServices();</CodeInline><br/>
-                    For the Blazor WebAssembly in the Program.cs add this:<br/>
-                    <CodeInline>builder.Services.AddMudMarkdownServices();</CodeInline>
+                    For BSS add <CodeInline>services.AddMudMarkdownServices();</CodeInline> in <CodeInline>Startup.cs</CodeInline><br/>
+                    For WASM add <CodeInline>builder.Services.AddMudMarkdownServices();</CodeInline> in <CodeInline>Program.cs</CodeInline>                    
                 </li>
             </ol>
         </Description>
