@@ -30,7 +30,7 @@ namespace MudBlazor.Extensions.Explorer.Helpers
 
         [Parameter] public bool ShowCode { get; set; } = true;
 
-        [Parameter] public bool NoToolbar { get; set; }
+        [Parameter] public bool NoToolbar { get; set; } = true;
 
         public string TooltipSourceCodeText { get; set; }
 
