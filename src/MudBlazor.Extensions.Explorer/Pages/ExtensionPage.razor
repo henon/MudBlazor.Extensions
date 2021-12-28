@@ -39,7 +39,7 @@
                 <div Class="mt-1">
                     License: @_extension.License
                 </div>
-                <MudButton Class="mt-3" Size="Size.Small" Variant="Variant.Filled" Color="Color.Primary" Link="@(_extension.GithubRepo.TrimEnd('/') + "/issues")">Report Bug</MudButton>
+                <MudButton Class="mt-3" Variant="Variant.Filled" Color="Color.Primary" Link="@(_extension.GithubRepo.TrimEnd('/') + "/issues")">Report Bug</MudButton>
             </DocsPageHeader>
             @foreach (var type in _extension.Docs)
             {
