@@ -15,18 +15,40 @@ Click Submit to see the serialized model as JSON:
     public MyForm _model = new MyForm();
     string _json { get; set; } = "";
 
+    [RenderValidationSummary()]
+    [RenderDataAnnotationsValidator]
     public class MyForm
     {
-	    [RenderMudTextField]
-	    [Required]
-	    public string FirstName { get; set; }
+        [RenderMudSelect(Options = "Mr,Mrs,Dr,Prof")]
+        public string Title { get; set; } = "Mr";
 
-	    [RenderMudTextField]
-	    [Required]
-	    public string LastName { get; set; }
+        [RenderMudTextField]
+        [Required]
+        public string FirstName { get; set; }
 
-	    [RenderMudDatePicker]
-	    public DateTime? DateOfBirth { get; set; }
+        [RenderMudTextField]
+        [Required]
+        public string LastName { get; set; }
+
+        [RenderMudDatePicker]
+        public DateTime? DateOfBirth { get; set; }
+
+        [RenderMudRadioGroup(Options = "Male,Female,Rather not say")]
+        public string Sex { get; set; }
+
+        [RenderMudAutocomplete(SearchFunc = "CountrySearch")]
+        public string Country { get; set; }
+
+        public string[] _countries = new string[] { "Austria", "Brazil", "Canada", "Denmark", "Equador", "Finland", "Germany", "Haiti", "Island", "Japan", "Kuwait", "Lithuania", "Mexico", "Nigeria", "Oman", "Pakistan", "Qatar", "Russia", "Sweden", "Turkey",  "United States of America", "Vietnam", "Western Sahara", "Yemen", "Zimbabwe"};
+        public async Task<IEnumerable<string>> CountrySearch(string value)
+        {
+            // In real life use an asynchronous function for fetching data from an api.
+            await Task.Delay(20);
+
+            if (string.IsNullOrEmpty(value))
+                return _countries;
+            return _countries.Where(x => x.Contains(value, StringComparison.InvariantCultureIgnoreCase));
+        }
     }
 
     private void OnValidSubmit(EditContext editContext)
