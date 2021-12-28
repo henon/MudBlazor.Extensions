@@ -1,8 +1,11 @@
 ﻿@using MudBlazor.ThemeManager
 
-<MudButton Variant="Variant.Filled" Class="pr-1">
-    Change Theme <MudThemeManagerButton OnClick="OpenThemeManager"/>
-</MudButton>
+<div class="d-flex">
+    <MudButton Variant="Variant.Filled" Class="mr-3" OnClick="OpenThemeManager">
+        Change Theme
+    </MudButton>
+    <MudThemeManagerButton  OnClick="OpenThemeManager"/>
+</div>
 <MudThemeManager @bind-Open="_themeManagerOpen" Theme="_themeManager" ThemeChanged="UpdateTheme" />
 
 @code {
