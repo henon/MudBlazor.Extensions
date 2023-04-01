@@ -10,3 +10,4 @@ More Components and Services for the MudBlazor ecosystem authored by the Communi
 - [CodeBeam MudExtensions](https://github.com/CodeBeamOrg/CodeBeam.MudExtensions) Various extension components for MudBlazor
 - [fgilde/MudBlazor.Extensions](https://github.com/fgilde/MudBlazor.Extensions) PDF Viewer and other components for MudBlazor
 - [MudBlazor.ThemeHelper](https://github.com/gismofx/MudBlazor.ThemeHelper) A simple library to make sharing a single MudBlazor theme across multiple projects and into Razor Class Libraries that use MudBlazor.
+- [CG.Blazor.Wizard](https://github.com/CodeGator/CG.Blazor.Wizard) A stepper / wizard component in for MudBlazor
