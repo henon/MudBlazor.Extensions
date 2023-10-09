@@ -1,0 +1,46 @@
+﻿@using MudBlazor.Extensions.Explorer.Extensions.ThirdParty.MudEx.Examples
+@using MudBlazor.Extensions.Explorer.Helpers
+@namespace MudBlazor.Extensions.Explorer.Extensions
+
+@*installation*@
+<DocsPageSection>
+    <SectionHeader Title="Installation">
+        <Description>
+            <ol class="ml-5">
+                <li class="my-2">
+                    If you don't have MudBlazor installed, <MudLink Href="https://mudblazor.com/getting-started/installation" Target="_blank">please install it first</MudLink>.
+                </li>
+                <li class="my-2">
+                    Install the NuGet package: <CodeInline>dotnet add package MudBlazor.Extensions</CodeInline>
+                </li>
+                <li class="my-2">
+                    For BSS add <CodeInline>services.AddMudExtensions();</CodeInline> in <CodeInline>Startup.cs</CodeInline><br />
+                    For WASM add <CodeInline>builder.Services.AddMudExtensions();</CodeInline> in <CodeInline>Program.cs</CodeInline>
+                </li>
+                <li class="my-2">
+                    Update your  <CodeInline>_Imports.razor</CodeInline> with the following lines:<br />
+                    <CodeInline>
+                        &commat;using MudBlazor.Extensions<br />
+                        &commat;using MudBlazor.Extensions.Components<br />
+                        &commat;using MudBlazor.Extensions.Components.ObjectEdit<br />
+                    </CodeInline>
+                </li>
+                <MudLink Href="https://github.com/fgilde/MudBlazor.Extensions#readme" Target="_blank">More information in the official readme</MudLink>.
+            </ol>
+        </Description>
+    </SectionHeader>
+</DocsPageSection>
+
+@*usage*@
+<DocsPageSection>
+    <SectionHeader Title="Use Dialog Extensions">
+        <Description>
+            Create an instance of <CodeInline>DialogOptionsEx</CodeInline> and pass it to some of the new <CodeInline>IDialogService</CodeInline> extension methods. <br />
+            Here is an example:
+        </Description>
+    </SectionHeader>
+    <SectionContent Outlined="true" FullWidth="false">
+        <MudExExample />
+    </SectionContent>
+    <SectionSource Code="MudExExample" />
+</DocsPageSection>

@@ -16,11 +16,12 @@
 
   <ItemGroup>
     <PackageReference Include="CG.Blazor.Forms._MudBlazor" Version="2022.1.1" />
+    <PackageReference Include="MudBlazor.Extensions" Version="1.7.73" />
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="6.0.0" />
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="6.0.0" PrivateAssets="all" />
     <PackageReference Include="Microsoft.AspNetCore.WebUtilities" Version="2.2.0" />
-    <PackageReference Include="MudBlazor" Version="6.0.2" />
-    <PackageReference Include="MudBlazor.Markdown" Version="0.0.6" />
+    <PackageReference Include="MudBlazor" Version="6.10.0" />
+    <PackageReference Include="MudBlazor.Markdown" Version="0.1.2" />
     <PackageReference Include="MudBlazor.ThemeManager" Version="1.0.5" />
   </ItemGroup>
 
@@ -94,5 +95,8 @@
   <!--Update ExampleCode-->
   <ItemGroup>
     <EmbeddedResource Include="Extensions\**\*.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Extensions\ThirdParty\MudEx\Code\" />
   </ItemGroup>
 </Project>

@@ -1,7 +1,7 @@
 ﻿@inherits LayoutComponentBase
-<MudThemeProvider/>
-<MudDialogProvider/>
-<MudSnackbarProvider/>
+<MudThemeProvider Theme="@Theme"/>
+<MudDialogProvider />
+<MudSnackbarProvider />
 
 <MudLayout>
     <MudAppBar>
@@ -9,9 +9,23 @@
         MudBlazor Extension Explorer
     </MudAppBar>
     <MudMainContent>
-        @Body
+        <CascadingValue Value="@this">
+            @Body
+        </CascadingValue>
     </MudMainContent>
 </MudLayout>
 
 @code {
+    private MudTheme _theme = new();
+
+    public MudTheme Theme
+    {
+        get => _theme;
+        set
+        {
+            _theme = value;
+            StateHasChanged();
+        }
+    }
+
 }

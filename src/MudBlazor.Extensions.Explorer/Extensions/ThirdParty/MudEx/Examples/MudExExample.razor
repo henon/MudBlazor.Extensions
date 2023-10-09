@@ -1,0 +1,36 @@
+﻿@using MudBlazor.Extensions.Components
+@using MudBlazor.Extensions.Components.ObjectEdit
+@using MudBlazor.Extensions.Options
+
+
+@inject IDialogService dialogService;
+@inject NavigationManager navigationManager;
+
+<div class="d-flex m-10" style="justify-content: center;">
+    <MudButton Variant="Variant.Filled" Class="mr-3" OnClick="ShowFileDialog">
+        Show File Dialog
+    </MudButton>
+    <MudButton Variant="Variant.Filled" Class="mr-3" OnClick="ShowThemeEditDialog">
+        Show Theme Edit Dialog
+    </MudButton>
+</div>
+
+<MudCard>
+    <MudAlert Severity="Severity.Info" ContentAlignment="HorizontalAlignment.Center" Variant="Variant.Outlined">Setup dialog options</MudAlert>
+    <MudCardContent>
+        <MudExObjectEdit AllowExport="true" AllowImport="true" MetaConfiguration="@DialogOptionsEx.ConfigureObjectEditMeta" Value="@_options"></MudExObjectEdit>
+    </MudCardContent>
+</MudCard>
+<br />
+
+@code
+{
+    [CascadingParameter] 
+    private MainLayout _layout { get; set; }
+
+    private DialogOptionsEx _options = DialogOptionsEx.SlideInFromRight;
+    
+    private async Task ShowFileDialog() => await dialogService.ShowFileDisplayDialog($"{navigationManager.BaseUri}/sample-data/sample-archive.zip", _options);
+
+    private async Task ShowThemeEditDialog() => _layout.Theme = await dialogService.ShowThemeEditAsync(_layout.Theme, dialogOptions: _options);
+}
