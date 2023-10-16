@@ -5,7 +5,7 @@
 namespace MudBlazor.Extensions.Explorer.Models
 {
     [AttributeUsage(AttributeTargets.Class)]
-    public class ExtensionAttribute : Attribute
+    public class ExtensionAttribute : System.Attribute
     {
     }
 }

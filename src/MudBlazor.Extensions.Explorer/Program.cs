@@ -5,8 +5,9 @@
 using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using MudBlazor;
-using MudBlazor.Services;
+using MudBlazor.Extensions;
 using MudBlazor.Extensions.Explorer;
+using MudBlazor.Services;
 
 var builder = WebAssemblyHostBuilder.CreateDefault(args);
 builder.RootComponents.Add<App>("#app");
@@ -20,5 +21,7 @@ builder.Services.AddDocsServices();
 builder.Services.AddMudMarkdownServices();
 //code gator forms
 builder.Services.AddFormGeneration();
+//mudblazor.extensions
+builder.Services.AddMudExtensions(c => c.WithoutAutomaticCssLoading());
 
 await builder.Build().RunAsync();

@@ -2,6 +2,7 @@
 // MudBlazor licenses this file to you under the MIT license.
 // See the LICENSE file in the project root for more information.
 
+using System.Reflection;
 using MudBlazor.Extensions.Explorer.Models;
 
 namespace MudBlazor.Extensions.Explorer.Services
@@ -23,7 +24,7 @@ namespace MudBlazor.Extensions.Explorer.Services
             return new ExplorerService();
         }
 
-        public static IEnumerable<Type> GetExtensionTypes() => typeof(ExplorerService).Assembly.GetTypes().Where(t => Attribute.GetCustomAttributes(t).OfType<ExtensionAttribute>().Any());
+        public static IEnumerable<Type> GetExtensionTypes() => typeof(ExplorerService).Assembly.GetTypes().Where(t => t.GetCustomAttributes<ExtensionAttribute>().Any());
 
         public IEnumerable<MudExtension> GetExtensions()
         {
