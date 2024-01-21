@@ -11,3 +11,4 @@ More Components and Services for the MudBlazor ecosystem authored by the Communi
 - [fgilde/MudBlazor.Extensions](https://github.com/fgilde/MudBlazor.Extensions) Dialog Extensions and components like File Viewer, Object Edit Form generation and other components for MudBlazor
 - [MudBlazor.ThemeHelper](https://github.com/gismofx/MudBlazor.ThemeHelper) A simple library to make sharing a single MudBlazor theme across multiple projects and into Razor Class Libraries that use MudBlazor.
 - [CG.Blazor.Wizard](https://github.com/CodeGator/CG.Blazor.Wizard) A stepper / wizard component in for MudBlazor
+- [MudExRichTextEditor](https://github.com/fgilde/MudExRichTextEditor) A Rich Text Editor for MudBlazor
