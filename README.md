@@ -12,3 +12,4 @@ More Components and Services for the MudBlazor ecosystem authored by the Communi
 - [MudBlazor.ThemeHelper](https://github.com/gismofx/MudBlazor.ThemeHelper) A simple library to make sharing a single MudBlazor theme across multiple projects and into Razor Class Libraries that use MudBlazor.
 - [CG.Blazor.Wizard](https://github.com/CodeGator/CG.Blazor.Wizard) A stepper / wizard component in for MudBlazor
 - [MudExRichTextEditor](https://github.com/fgilde/MudExRichTextEditor) A Rich Text Editor for MudBlazor
+- [MudBlazor.StaticInput](https://github.com/0phois/MudBlazor.StaticInput) An input in MudBlazor optic that works with SSR
